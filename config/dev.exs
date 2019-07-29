@@ -15,7 +15,7 @@ config :koroibos, Koroibos.Repo,
 # with webpack to recompile .js and .css sources.
 config :koroibos, KoroibosWeb.Endpoint,
   http: [port: 4000],
-  debug_errors: true,
+  debug_errors: true,     # change this to false to remove errors from endpoints
   code_reloader: true,
   check_origin: false,
   watchers: []
