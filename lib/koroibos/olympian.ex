@@ -1,7 +1,7 @@
 defmodule Koroibos.Olympian do
   use Ecto.Schema
 
-  schema "teams" do
+  schema "olympians" do
     field :name, :string
     timestamps()
 

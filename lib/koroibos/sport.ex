@@ -1,10 +1,10 @@
 defmodule Koroibos.Sport do
   use Ecto.Schema
 
-  schema "teams" do
+  schema "sports" do
     field :description, :string
     timestamps()
 
-    belongs_to :event, Koroibos.Event
+    has_many :events, Koroibos.Event
   end
 end
