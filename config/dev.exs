@@ -2,8 +2,6 @@ use Mix.Config
 
 # Configure your database
 config :koroibos, Koroibos.Repo,
-  username: "postgres",
-  password: "postgres",
   database: "koroibos_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
