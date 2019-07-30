@@ -62,4 +62,18 @@ defmodule Koroibos.SchemaTest do
       assert {:error, %Ecto.Changeset{}} = Event.create(@invalid_attrs)
     end
   end
+
+  describe "sports" do
+    @valid_attrs %{ description: "Weightlifting" }
+    @invalid_attrs %{ description: nil }
+
+    test "Sport.create/1 with valid data creates a Sport" do
+      assert {:ok, %Sport{} = result} = Sport.create(@valid_attrs)
+      assert result.description == "Weightlifting"
+    end
+
+    test "Sport.create/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Sport.create(@invalid_attrs)
+    end
+  end
 end
