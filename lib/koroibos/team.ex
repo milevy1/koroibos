@@ -1,7 +1,7 @@
 defmodule Koroibos.Team do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Koroibos.{Repo, Team}
+  alias Koroibos.{ Repo, Team }
 
   schema "teams" do
     field :name, :string
