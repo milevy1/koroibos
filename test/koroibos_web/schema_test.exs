@@ -1,6 +1,6 @@
 defmodule Koroibos.SchemaTest do
   use Koroibos.DataCase
-  alias Koroibos.{ Team, Olympian, Result, Event, Sport }
+  alias Koroibos.{Team, Olympian, Result, Event, Sport}
 
   describe "teams" do
     @valid_attrs %{name: "Team Name"}
@@ -17,17 +17,12 @@ defmodule Koroibos.SchemaTest do
   end
 
   describe "olympians" do
-    @valid_attrs %{ name:   "Olympian Name",
-                    sex:    "M",
-                    age:    1,
-                    height: 100,
-                    weight: 200
-                  }
+    @valid_attrs %{name: "Olympian Name", sex: "M", age: 1, height: 100, weight: 200}
     @invalid_attrs %{name: nil}
 
     test "Olympian.create/1 with valid data creates a team" do
-      assert {:ok, %Olympian{} = team} = Olympian.create(@valid_attrs)
-      assert team.name == "Olympian Name"
+      assert {:ok, %Olympian{} = olympian} = Olympian.create(@valid_attrs)
+      assert olympian.name == "Olympian Name"
     end
 
     test "Olympian.create/1 with invalid data returns error changeset" do
@@ -36,8 +31,8 @@ defmodule Koroibos.SchemaTest do
   end
 
   describe "results" do
-    @valid_attrs %{ event_year: "2016 Summer" }
-    @invalid_attrs %{ event_year: nil }
+    @valid_attrs %{event_year: "2016 Summer"}
+    @invalid_attrs %{event_year: nil}
 
     test "Result.create/1 with valid data creates a team" do
       assert {:ok, %Result{} = result} = Result.create(@valid_attrs)
@@ -50,12 +45,12 @@ defmodule Koroibos.SchemaTest do
   end
 
   describe "events" do
-    @valid_attrs %{ name: "Weightlifting Women's Super-Heavyweight" }
-    @invalid_attrs %{ name: nil }
+    @valid_attrs %{name: "Weightlifting Women's Super-Heavyweight"}
+    @invalid_attrs %{name: nil}
 
     test "Event.create/1 with valid data creates a team" do
-      assert {:ok, %Event{} = result} = Event.create(@valid_attrs)
-      assert result.name == "Weightlifting Women's Super-Heavyweight"
+      assert {:ok, %Event{} = event} = Event.create(@valid_attrs)
+      assert event.name == "Weightlifting Women's Super-Heavyweight"
     end
 
     test "Event.create/1 with invalid data returns error changeset" do
@@ -64,12 +59,12 @@ defmodule Koroibos.SchemaTest do
   end
 
   describe "sports" do
-    @valid_attrs %{ description: "Weightlifting" }
-    @invalid_attrs %{ description: nil }
+    @valid_attrs %{description: "Weightlifting"}
+    @invalid_attrs %{description: nil}
 
     test "Sport.create/1 with valid data creates a Sport" do
-      assert {:ok, %Sport{} = result} = Sport.create(@valid_attrs)
-      assert result.description == "Weightlifting"
+      assert {:ok, %Sport{} = sport} = Sport.create(@valid_attrs)
+      assert sport.description == "Weightlifting"
     end
 
     test "Sport.create/1 with invalid data returns error changeset" do

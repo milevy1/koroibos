@@ -1,7 +1,7 @@
 defmodule Koroibos.Olympian do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Koroibos.{ Repo, Olympian }
+  alias Koroibos.{Repo, Olympian}
 
   schema "olympians" do
     field :name, :string
@@ -17,7 +17,7 @@ defmodule Koroibos.Olympian do
   @doc false
   def changeset(%Olympian{} = olympian, attrs) do
     olympian
-    |> cast(attrs, [:name, :sex, :age, :height, :weight])
+    |> cast(attrs, [:team_id, :name, :sex, :age, :height, :weight])
     |> validate_required([:name])
   end
 
@@ -37,5 +37,32 @@ defmodule Koroibos.Olympian do
     %Olympian{}
     |> Olympian.changeset(attrs)
     |> Repo.insert()
+  end
+
+  def find_or_create_by(row, team_id) do
+    case Repo.get_by(Olympian, name: row.name, age: row.age) do
+      nil ->
+        Olympian.create(%{
+          team_id: team_id,
+          name: row.name,
+          sex: row.sex,
+          age: String.to_integer(row.age),
+          height:
+            if row.height == "NA" do
+              nil
+            else
+              String.to_integer(row.height)
+            end,
+          weight:
+            if row.weight == "NA" do
+              nil
+            else
+              String.to_integer(row.weight)
+            end
+        })
+
+      result ->
+        {:ok, result}
+    end
   end
 end

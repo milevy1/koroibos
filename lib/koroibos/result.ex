@@ -1,7 +1,7 @@
 defmodule Koroibos.Result do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Koroibos.{ Repo, Result }
+  alias Koroibos.{Repo, Result}
 
   schema "results" do
     field :event_year, :string
@@ -15,7 +15,7 @@ defmodule Koroibos.Result do
   @doc false
   def changeset(%Result{} = team, attrs) do
     team
-    |> cast(attrs, [:event_year])
+    |> cast(attrs, [:olympian_id, :event_id, :event_year, :medal])
     |> validate_required([:event_year])
   end
 

@@ -1,7 +1,7 @@
 defmodule Koroibos.Team do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Koroibos.{ Repo, Team }
+  alias Koroibos.{Repo, Team}
 
   schema "teams" do
     field :name, :string
@@ -33,5 +33,12 @@ defmodule Koroibos.Team do
     %Team{}
     |> Team.changeset(attrs)
     |> Repo.insert()
+  end
+
+  def find_or_create_by(team_name) do
+    case Repo.get_by(Team, name: team_name) do
+      nil -> Team.create(%{name: team_name})
+      result -> {:ok, result}
+    end
   end
 end
