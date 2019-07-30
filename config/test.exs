@@ -2,8 +2,6 @@ use Mix.Config
 
 # Configure your database
 config :koroibos, Koroibos.Repo,
-  username: "postgres",
-  password: "postgres",
   database: "koroibos_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
