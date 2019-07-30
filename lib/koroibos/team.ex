@@ -18,12 +18,12 @@ defmodule Koroibos.Team do
   end
 
   @doc """
-  Creates a team.
+  Creates a Team.
 
   ## Examples
 
       iex> create(%{field: value})
-      {:ok, %User{}}
+      {:ok, %Team{}}
 
       iex> create(%{field: bad_value})
       {:error, %Ecto.Changeset{}}

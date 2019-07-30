@@ -36,8 +36,7 @@ defmodule Koroibos.SchemaTest do
   end
 
   describe "results" do
-    @valid_attrs %{ event_year: "2016 Summer"
-                  }
+    @valid_attrs %{ event_year: "2016 Summer" }
     @invalid_attrs %{ event_year: nil }
 
     test "Result.create/1 with valid data creates a team" do
@@ -47,6 +46,20 @@ defmodule Koroibos.SchemaTest do
 
     test "Result.create/1 with invalid data returns error changeset" do
       assert {:error, %Ecto.Changeset{}} = Result.create(@invalid_attrs)
+    end
+  end
+
+  describe "events" do
+    @valid_attrs %{ name: "Weightlifting Women's Super-Heavyweight" }
+    @invalid_attrs %{ name: nil }
+
+    test "Event.create/1 with valid data creates a team" do
+      assert {:ok, %Event{} = result} = Event.create(@valid_attrs)
+      assert result.name == "Weightlifting Women's Super-Heavyweight"
+    end
+
+    test "Event.create/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Event.create(@invalid_attrs)
     end
   end
 end
