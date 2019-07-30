@@ -13,7 +13,6 @@ defmodule Koroibos.SchemaTest do
 
     test "Team.create/1 with invalid data returns error changeset" do
       assert {:error, %Ecto.Changeset{}} = Team.create(@invalid_attrs)
-      assert {:error, %Ecto.Changeset{}} = Team.create(%{name: 1})
     end
   end
 
@@ -33,7 +32,21 @@ defmodule Koroibos.SchemaTest do
 
     test "Olympian.create/1 with invalid data returns error changeset" do
       assert {:error, %Ecto.Changeset{}} = Olympian.create(@invalid_attrs)
-      assert {:error, %Ecto.Changeset{}} = Olympian.create(%{name: 1})
+    end
+  end
+
+  describe "results" do
+    @valid_attrs %{ event_year: "2016 Summer"
+                  }
+    @invalid_attrs %{ event_year: nil }
+
+    test "Result.create/1 with valid data creates a team" do
+      assert {:ok, %Result{} = result} = Result.create(@valid_attrs)
+      assert result.event_year == "2016 Summer"
+    end
+
+    test "Result.create/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Result.create(@invalid_attrs)
     end
   end
 end
