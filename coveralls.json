@@ -1,0 +1,14 @@
+{
+  "skip_files": [
+    "test/support/",
+    "lib/koroibos_web/gettext.ex",
+    "lib/koroibos_web/endpoint.ex",
+    "lib/koroibos_web/controllers/fallback_controller.ex",
+    "lib/koroibos_web/channels/user_socket.ex",
+    "lib/koroibos_web/views/error_helpers.ex",
+    "lib/koroibos_web/views/changeset_view.ex",
+    "lib/koroibos_web.ex",
+    "lib/koroibos/repo.ex",
+    "lib/koroibos.ex"
+  ]
+}
