@@ -17,9 +17,10 @@ To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.setup`
+  * Populate database with CSV data `mix run priv/repo/seeds.exs`
   * Start Phoenix endpoint with `mix phx.server`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Now you can visit endpoints at [`localhost:4000`](http://localhost:4000) from your browser.
 
 
 ## [Database Schema](https://dbdiagram.io/d/5d3f59eaced98361d6dd1d07)
