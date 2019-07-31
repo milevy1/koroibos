@@ -7,6 +7,12 @@ defmodule KoroibosWeb.OlympianView do
   end
 
   def render("olympian.json", %{olympian: olympian}) do
-    %{name: olympian.name, team: olympian.team, age: olympian.age}
+    %{
+      name: olympian.name,
+      team: olympian.team,
+      age: olympian.age,
+      sport: olympian.sport,
+      total_medals_won: olympian.total_medals_won
+    }
   end
 end

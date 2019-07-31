@@ -1,7 +1,8 @@
 defmodule Koroibos.Olympian do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Koroibos.{Repo, Olympian}
+  import Ecto.Query
+  alias Koroibos.{Repo, Olympian, Team, Result, Event, Sport}
 
   schema "olympians" do
     field :name, :string
@@ -64,5 +65,23 @@ defmodule Koroibos.Olympian do
       result ->
         {:ok, result}
     end
+  end
+
+  def index do
+    query = from o in Olympian,
+              inner_join: t in Team, on: t.id == o.team_id,
+              inner_join: r in Result, on: r.olympian_id == o.id,
+              inner_join: e in Event, on: e.id == r.event_id,
+              inner_join: s in Sport, on: s.id == e.sport_id,
+              group_by: [o.name, o.age, t.name, s.description],
+              select: %{
+                name: o.name,
+                age: o.age,
+                team: t.name,
+                sport: s.description,
+                total_medals_won: fragment("SUM(CASE WHEN ? = 'NA' THEN 0 ELSE 1 END) as total_medals_won", r.medal)
+              }
+
+    Repo.all(query)
   end
 end
